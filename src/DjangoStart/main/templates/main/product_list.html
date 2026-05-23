@@ -1,0 +1,85 @@
+{% extends 'main/base.html' %}
+
+{% block title %}
+  {% if current_category %}{{ current_category.name }} - InspireStore{% else %}Всі товари - InspireStore{% endif %}
+{% endblock %}
+
+{% block content %}
+<div class="list-header">
+    <h1 class="posts-title">
+        {% if current_category %}
+        <span class="title-label">Категорія</span>
+        <span class="title-value">{{ current_category.name }}</span>
+        {% else %}
+        <span class="title-value">Всі товари</span>
+        {% endif %}
+    </h1>
+
+    <div class="sort-container">
+        <span class="sort-label">Сортувати:</span>
+        <div class="sort-buttons">
+            <a href="?sort=new" class="sort-btn {% if current_sort == 'new' %}active{% endif %}">
+                <span class="material-symbols-outlined btn-icon">schedule</span>
+                <span>Нові</span>
+            </a>
+            <a href="?sort=price_low" class="sort-btn {% if current_sort == 'price_low' %}active{% endif %}">
+                <span class="material-symbols-outlined btn-icon">arrow_downward</span>
+                <span>Дешеві</span>
+            </a>
+            <a href="?sort=price_high" class="sort-btn {% if current_sort == 'price_high' %}active{% endif %}">
+                <span class="material-symbols-outlined btn-icon">arrow_upward</span>
+                <span>Дорогі</span>
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="posts-grid">
+    {% for product in products %}
+    <article class="post-card">
+        <div class="card-image-wrapper">
+            {% if product.image %}
+            <img src="{{ product.image.url }}" alt="{{ product.name }}" class="card-img" />
+            {% else %}
+            <div class="card-img-placeholder">
+                <span class="material-symbols-outlined">image</span>
+            </div>
+            {% endif %}
+            <a href="{{ product.category.get_absolute_url }}" class="card-badge">
+                {{ product.category.name }}
+            </a>
+        </div>
+
+        <div class="card-body">
+            <h2 class="card-title">
+                <a href="{{ product.get_absolute_url }}">{{ product.name }}</a>
+            </h2>
+
+            <p class="card-excerpt">
+                {{ product.description|truncatewords:15 }}
+            </p>
+
+            <div class="card-meta">
+                <div class="meta-row-bottom">
+                    <span class="meta-info">
+                        <span class="material-symbols-outlined meta-icon">payments</span>
+                        <span>{{ product.price }} ₴</span>
+                    </span>
+                    <a href="{{ product.get_absolute_url }}" class="read-more-link">
+                        <span>Детальніше</span>
+                        <span class="material-symbols-outlined arrow-icon">arrow_forward</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </article>
+    {% empty %}
+    <div class="no-posts-container">
+        <span class="material-symbols-outlined empty-icon">inventory_2</span>
+        <h3>Товарів не знайдено</h3>
+        <p>Спробуйте іншу категорію або зайдіть пізніше</p>
+        <a href="{% url 'main:product_list' %}" class="btn-primary">На головну</a>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
