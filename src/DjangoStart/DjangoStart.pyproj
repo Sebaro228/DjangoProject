@@ -32,10 +32,13 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="accounts\templatetags\account_filters.py" />
     <Compile Include="accounts\admin.py" />
     <Compile Include="accounts\apps.py" />
+    <Compile Include="accounts\middleware.py" />
     <Compile Include="Accounts\migrations\__init__.py" />
     <Compile Include="accounts\models.py" />
+    <Compile Include="accounts\templatetags\account_tags.py" />
     <Compile Include="accounts\tests.py" />
     <Compile Include="accounts\urls.py" />
     <Compile Include="accounts\views.py" />
@@ -58,6 +61,7 @@
     <Content Include="Accounts\templates\accounts\login.html" />
     <Content Include="Accounts\templates\accounts\profile.html" />
     <Content Include="Accounts\templates\accounts\register.html" />
+    <Content Include="accounts\templatetags\__init.py__" />
     <Content Include="main\templates\main\base.html" />
     <Content Include="main\templates\main\product_detail.html" />
     <Content Include="static\css\style.css" />
@@ -67,6 +71,7 @@
   <ItemGroup>
     <Folder Include="accounts\" />
     <Folder Include="Accounts\migrations\" />
+    <Folder Include="accounts\templatetags\" />
     <Folder Include="Accounts\templates\" />
     <Folder Include="Accounts\templates\accounts\" />
     <Folder Include="DjangoStart\" />

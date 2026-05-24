@@ -1,5 +1,5 @@
 {% extends 'main/base.html' %}
-
+{% load account_filters account_tags %}
 {% block title %}Профіль користувача - InspireBlog{% endblock %}
 
 {% block content %}
@@ -9,11 +9,7 @@
             <span class="material-symbols-outlined">account_circle</span>
         </div>
         <div class="profile-username">{{ user.username }}</div>
-        {% if user.is_staff %}
-        <div class="profile-role">Адміністратор</div>
-        {% else %}
-        <div class="profile-role">Користувач</div>
-        {% endif %}
+        <div class="profile-role">{{ user|user_role }}</div>
     </div>
 
     <div class="profile-details">
@@ -22,12 +18,12 @@
             <span class="detail-value">{{ user.username }}</span>
         </div>
         <div class="detail-row">
-            <span class="detail-label">Email адреса</span>
+            <span class="detail-label">Email адреса</span> 
             <span class="detail-value">{{ user.email|default:"Не вказано" }}</span>
         </div>
         <div class="detail-row">
             <span class="detail-label">Дата реєстрації</span>
-            <span class="detail-value">{{ user.date_joined|date:"d.m.Y H:i" }}</span>
+            <span class="detail-value">{{ user.date_joined|date:"d.m.Y H:i" }} ({% days_on_site user.date_joined %})</span>
         </div>
         <div class="detail-row">
             <span class="detail-label">Останній вхід</span>

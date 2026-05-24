@@ -56,14 +56,14 @@
             </div>
             <div class="related-body">
                 <h3 class="related-card-title">
-                    <a href="#">{{ related.name }}</a>
+                    <a href="{{ related.get_absolute_url }}">{{ related.name }}</a>
                 </h3>
                 <p class="related-excerpt">{{ related.description|truncatewords:12 }}</p>
                 <div class="meta-item">
                     <span class="material-symbols-outlined meta-icon">payments</span>
                     <span>{{ related.price }} ₴</span>
                 </div>
-                <a href="#" class="related-link">
+                <a href="{{ related.get_absolute_url }}" class="related-link">
                     <span>Детальніше</span>
                     <span class="material-symbols-outlined arrow-icon">arrow_forward</span>
                 </a>
