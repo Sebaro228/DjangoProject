@@ -1086,3 +1086,128 @@ ul {
         font-size: 24px;
     }
 }
+/* ==========================================================================
+   Стилізація автоматичних Django-форм (as_p)
+   ========================================================================== */
+
+/* Робимо картку редагування трохи ширшою, якщо є багато полів */
+.profile-edit-card {
+    max-width: 540px;
+}
+
+.django-auto-form p {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Стилізуємо label так само, як у ручних формах */
+.django-auto-form label {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 8px;
+}
+
+/* Стилізуємо всі типи полів вводу */
+.django-auto-form input[type="text"],
+.django-auto-form input[type="email"],
+.django-auto-form input[type="password"],
+.django-auto-form input[type="number"],
+.django-auto-form input[type="url"],
+.django-auto-form textarea,
+.django-auto-form select {
+    width: 100%;
+    padding: 14px 16px;
+    border: 1.5px solid transparent;
+    border-radius: var(--radius-md);
+    font-family: inherit;
+    font-size: 15px;
+    color: var(--text-dark);
+    background: var(--bg-main);
+    transition: var(--transition);
+}
+
+.django-auto-form textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+    /* Фокус полів */
+    .django-auto-form input:focus,
+    .django-auto-form textarea:focus,
+    .django-auto-form select:focus {
+        outline: none;
+        background: white;
+        border-color: var(--brand-purple);
+        box-shadow: 0 0 0 4px rgba(94, 35, 157, 0.1);
+    }
+
+/* Стилізація поля завантаження файлу (аватарки) */
+.django-auto-form input[type="file"] {
+    padding: 10px;
+    background: rgba(94, 35, 157, 0.05);
+    border: 1px dashed var(--brand-purple);
+    border-radius: var(--radius-md);
+    font-size: 14px;
+    color: var(--text-gray);
+    cursor: pointer;
+}
+
+    .django-auto-form input[type="file"]::file-selector-button {
+        background: var(--primary-yellow);
+        color: var(--brand-purple-dark);
+        border: none;
+        padding: 8px 16px;
+        border-radius: 8px;
+        font-weight: 700;
+        cursor: pointer;
+        margin-right: 12px;
+        transition: var(--transition);
+    }
+
+        .django-auto-form input[type="file"]::file-selector-button:hover {
+            background: var(--primary-yellow-hover);
+        }
+
+/* Текст-підказка під полем (help_text) */
+.django-auto-form .helptext {
+    display: block;
+    color: var(--text-gray);
+    font-size: 12px;
+    margin-top: 6px;
+    line-height: 1.4;
+}
+
+/* Список помилок Django */
+.django-auto-form ul.errorlist {
+    list-style: none;
+    padding: 0;
+    margin: 4px 0 0 0;
+}
+
+    .django-auto-form ul.errorlist li {
+        color: #DC2626;
+        font-size: 13px;
+        font-weight: 600;
+        margin-top: 4px;
+    }
+
+/* Якщо чекбокс (наприклад, "Очистити аватар") */
+.django-auto-form input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--brand-purple);
+    margin-right: 8px;
+    cursor: pointer;
+}
+
+.django-auto-form p:has(input[type="checkbox"]) {
+    flex-direction: row;
+    align-items: center;
+}
+
+    .django-auto-form p:has(input[type="checkbox"]) label {
+        margin-bottom: 0;
+        font-weight: 500;
+    }

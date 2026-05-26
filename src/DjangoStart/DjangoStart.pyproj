@@ -32,6 +32,7 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="accounts\forms.py" />
     <Compile Include="accounts\templatetags\account_filters.py" />
     <Compile Include="accounts\admin.py" />
     <Compile Include="accounts\apps.py" />
@@ -58,6 +59,7 @@
     <Compile Include="DjangoStart\wsgi.py" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Accounts\templates\accounts\profile_edit.html" />
     <Content Include="Accounts\templates\accounts\login.html" />
     <Content Include="Accounts\templates\accounts\profile.html" />
     <Content Include="Accounts\templates\accounts\register.html" />

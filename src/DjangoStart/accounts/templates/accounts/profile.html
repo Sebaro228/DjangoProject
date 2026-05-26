@@ -6,7 +6,13 @@
 <div class="profile-card">
     <div class="profile-avatar-section">
         <div class="profile-avatar-placeholder">
-            <span class="material-symbols-outlined">account_circle</span>
+          {% if user.profile.avatar %}
+            <img src="{{ user.profile.avatar.url }}" alt="Avatar" class="profile-avatar-placeholder">
+          {% else %}
+             <div class="profile-avatar-placeholder">
+               <span class="material-symbols-outlined">account_circle</span>
+             </div>
+          {% endif %}
         </div>
         <div class="profile-username">{{ user.username }}</div>
         <div class="profile-role">{{ user|user_role }}</div>
@@ -35,6 +41,10 @@
         <a href="{% url 'main:product_list' %}" class="btn-secondary">
             <span class="material-symbols-outlined">arrow_back</span>
             <span>До списку товарів</span>
+        </a>
+        <a href="{% url 'accounts:profile_edit' %}" class="btn-primary">
+            <span class="material-symbols-outlined">edit</span>
+            <span>Редагувати профіль</span>
         </a>
         <a href="{% url 'accounts:logout' %}" class="btn-danger">
             <span class="material-symbols-outlined">logout</span>
