@@ -1211,3 +1211,88 @@ ul {
         margin-bottom: 0;
         font-weight: 500;
     }
+
+/* --- Контейнер нижнього рядка --- */
+.meta-row-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    flex-wrap: wrap; /* Щоб елементи не "злипались" на мобільних пристроях */
+    padding-top: 15px;
+    border-top: 1px solid #eaeaea; /* Легкий розділювач зверху (за бажанням) */
+}
+
+/* --- Ціна --- */
+.meta-info.price-info {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: #2c3e50;
+}
+
+    .meta-info.price-info .meta-icon {
+        color: #27ae60; /* Зелений колір для іконки грошей */
+        font-size: 1.2rem;
+    }
+
+/* --- Посилання "Детальніше" --- */
+.read-more-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    text-decoration: none;
+    color: #7f8c8d;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+    .read-more-link:hover {
+        color: #3498db;
+    }
+
+    .read-more-link .arrow-icon {
+        font-size: 1.1rem;
+        transition: transform 0.3s ease;
+    }
+
+    .read-more-link:hover .arrow-icon {
+        transform: translateX(4px); /* Анімація стрілочки вправо при наведенні */
+    }
+
+/* --- Кнопка "Додати в кошик" --- */
+.btn-primary.add-to-cart-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background-color: #3498db; /* Основний колір кнопки */
+    color: #ffffff;
+    padding: 10px 18px;
+    border-radius: 8px; /* Заокруглені кути */
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(52, 152, 219, 0.2);
+}
+
+    .btn-primary.add-to-cart-btn .material-symbols-outlined {
+        font-size: 1.2rem; /* Оптимальний розмір іконки для кнопки */
+    }
+
+    /* Ефекти при наведенні (Hover) */
+    .btn-primary.add-to-cart-btn:hover {
+        background-color: #2980b9;
+        transform: translateY(-2px); /* Кнопка трохи піднімається */
+        box-shadow: 0 6px 12px rgba(52, 152, 219, 0.3);
+    }
+
+    /* Ефекти при кліку (Active) */
+    .btn-primary.add-to-cart-btn:active {
+        transform: translateY(0);
+        box-shadow: 0 2px 4px rgba(52, 152, 219, 0.2);
+    }

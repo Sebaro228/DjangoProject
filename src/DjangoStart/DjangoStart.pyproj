@@ -3,7 +3,7 @@
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <Name>DjangoStart</Name>
     <RootNamespace>DjangoStart</RootNamespace>
-    <InterpreterId>MSBuild|env1|$(MSBuildProjectFullPath)</InterpreterId>
+    <InterpreterId>MSBuild|env3|$(MSBuildProjectFullPath)</InterpreterId>
     <SuppressPackageInstallationPrompt>True</SuppressPackageInstallationPrompt>
     <SuppressConfigureTestFrameworkPrompt>true</SuppressConfigureTestFrameworkPrompt>
   </PropertyGroup>
@@ -46,6 +46,9 @@
     <Compile Include="accounts\__init__.py" />
     <Compile Include="main\admin.py" />
     <Compile Include="main\apps.py" />
+    <Compile Include="main\cart.py" />
+    <Compile Include="main\context_processors.py" />
+    <Compile Include="main\forms.py" />
     <Compile Include="main\migrations\__init__.py" />
     <Compile Include="main\models.py" />
     <Compile Include="main\tests.py" />
@@ -65,6 +68,8 @@
     <Content Include="Accounts\templates\accounts\register.html" />
     <Content Include="accounts\templatetags\__init.py__" />
     <Content Include="main\templates\main\base.html" />
+    <Content Include="main\templates\main\cart_detail.html" />
+    <Content Include="main\templates\main\contact.html" />
     <Content Include="main\templates\main\product_detail.html" />
     <Content Include="static\css\style.css" />
     <Content Include="main\templates\main\product_list.html" />
@@ -89,6 +94,24 @@
       <Id>env1</Id>
       <Version>3.14</Version>
       <Description>env1 (Python 3.14.5)</Description>
+      <InterpreterPath>Scripts\python.exe</InterpreterPath>
+      <WindowsInterpreterPath>Scripts\pythonw.exe</WindowsInterpreterPath>
+      <PathEnvironmentVariable>PYTHONPATH</PathEnvironmentVariable>
+      <Architecture>X64</Architecture>
+    </Interpreter>
+    <Interpreter Include="env2\">
+      <Id>env2</Id>
+      <Version>3.9</Version>
+      <Description>env2 (Python 3.9 (64-bit))</Description>
+      <InterpreterPath>Scripts\python.exe</InterpreterPath>
+      <WindowsInterpreterPath>Scripts\pythonw.exe</WindowsInterpreterPath>
+      <PathEnvironmentVariable>PYTHONPATH</PathEnvironmentVariable>
+      <Architecture>X64</Architecture>
+    </Interpreter>
+    <Interpreter Include="env3\">
+      <Id>env3</Id>
+      <Version>3.14</Version>
+      <Description>env3 (Python 3.14.5)</Description>
       <InterpreterPath>Scripts\python.exe</InterpreterPath>
       <WindowsInterpreterPath>Scripts\pythonw.exe</WindowsInterpreterPath>
       <PathEnvironmentVariable>PYTHONPATH</PathEnvironmentVariable>

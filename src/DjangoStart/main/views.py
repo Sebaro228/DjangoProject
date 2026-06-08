@@ -1,5 +1,8 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
+from django.contrib import messages
 from .models import Product, Category
+from .forms import ContactForm
+from .cart import Cart
  
 def product_list(request, category_slug=None):
     products = Product.objects.all()
@@ -35,3 +38,51 @@ def product_detail(request, id, slug):
         "related_products": related_products
     }
     return render(request, "main/product_detail.html", context)
+
+
+def contact_view(request):
+    categories = Category.objects.all()
+
+    if request.method == 'POST':
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            # Отримуємо валідовані дані з форми
+            name = form.cleaned_data['name']
+            email = form.cleaned_data['email']
+            subject = form.cleaned_data['subject']
+            message_text = form.cleaned_data['message']
+            
+            # Тут за потреби можна реалізувати надсилання листа на email адміна за допомогою send_mail()
+            # Наприклад:
+            # from django.core.mail import send_mail
+            # send_mail(f"Тема: {subject}", f"Від: {name} ({email})\n\n{message_text}", email, ['admin@blog.com'])
+
+            # Додаємо сповіщення про успіх у сесію користувача
+            messages.success(request, "Дякуємо! Ваше повідомлення успішно надіслано. Ми зв'яжемося з вами найближчим часом.")
+            
+            # Перенаправляємо користувача назад на порожню форму
+            return redirect('main:contact')
+    else:
+        form = ContactForm()
+
+    return render(request, 'main/contact.html', {
+        'form': form,
+        'categories': categories,
+        'title': 'Контакти'
+    })
+
+def cart_add(request, product_id):
+    cart = Cart(request)
+    product = get_object_or_404(Product, id=product_id)
+    cart.add(product=product)
+    return redirect('main:product_list')
+
+def cart_remove(request, product_id):
+    cart = Cart(request)
+    product = get_object_or_404(Product, id=product_id)
+    cart.remove(product)
+    return redirect('main:product_list')  
+
+def cart_detail(request):
+    cart = Cart(request)
+    return render(request, 'main/cart_detail.html', {'cart': cart})

@@ -27,8 +27,19 @@
                                 <span>Всі товари</span>
                             </a>
                         </li>
-                        {% for cat in categories %}
                         <li>
+                            <a href="{% url 'main:contact' %}" class="nav-item {% if request.resolver_match.url_name == 'contact' %}active{% endif %}">
+                                <span class="material-symbols-outlined nav-icon">mail</span>
+                                <span>Контакти</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{% url 'main:cart_detail' %}" class="nav-item {% if request.resolver_match.url_name == 'cart_detail' %}active{% endif %}">
+                                <span class="material-symbols-outlined nav-icon">shopping_cart</span>
+                                <span>Кошик</span>
+                            </a>
+                            {% for cat in categories %}
+<li>
                             <a href="{{ cat.get_absolute_url }}" class="nav-item {% if current_category.id == cat.id %}active{% endif %}">
                                 <span class="material-symbols-outlined nav-icon">folder_open</span>
                                 <span>{{ cat.name }}</span>
